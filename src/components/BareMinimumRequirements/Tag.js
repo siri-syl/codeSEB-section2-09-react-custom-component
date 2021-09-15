@@ -92,7 +92,7 @@ export const Tag = () => {
     // - 이미 입력되어 있는 태그인지 검사하여 이미 있는 태그라면 추가하지 말기
     // - 아무것도 입력하지 않은 채 Enter 키 입력시 메소드 실행하지 말기
     // - 태그가 추가되면 input 창 비우기
-      if(event.key === "Enter" && event.target.value !== ''){
+      if(event.target.value !== ''){
         if(!tags.includes(event.target.value)){
           setTags([...tags,event.target.value])
           event.target.value='';
@@ -120,7 +120,7 @@ export const Tag = () => {
         <input
           className='tag-input'
           type='text'
-          onKeyUp={(e)=>addTags(e)}
+          onKeyUp={(e)=>e.key === 'Enter'? addTags(e) : null}
           placeholder='Press enter to add tags'
         />
       </TagsInput>

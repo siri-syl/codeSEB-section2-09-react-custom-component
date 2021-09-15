@@ -48,6 +48,7 @@ export const Modal = () => {
     // TODO : isOpen의 상태를 변경하는 메소드를 구현합니다.
     setIsOpen(!isOpen)
   };
+  
 
   return (
     <>
@@ -60,7 +61,7 @@ export const Modal = () => {
         </ModalBtn>
         {/* TODO : 조건부 렌더링을 활용해서 Modal이 열린 상태(isOpen이 true인 상태)일 때만 모달창과 배경이 뜰 수 있게 구현해야 합니다. */}
         {isOpen ? <ModalBackdrop onClick={openModalHandler}>
-        <ModalView>모달창입니다!</ModalView>
+        <ModalView onClick={(e) => e.stopPropagation()}>모달창입니다!</ModalView>
         </ModalBackdrop> : null}
       </ModalContainer>
     </>
